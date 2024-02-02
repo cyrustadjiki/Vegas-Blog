@@ -6,6 +6,7 @@ game = function(
     ){
   
 # num_games <- 1000
+# win_probability <- 0.5
 # win_probability <- 0.49
 # money_per_game <- 10
 # seed = sample(1:1000000,1)
@@ -25,16 +26,27 @@ total_money <- cumulative_winnings - cumulative_losses
 df <- data.frame(Game = 1:num_games, CumulativeWinnings = cumulative_winnings, CumulativeLosses = cumulative_losses, TotalMoney = total_money)
 
 # Plot using ggplot
-ggplot(df, aes(x = Game)) +
+p = ggplot(df, aes(x = Game)) +
   # geom_line(aes(y = CumulativeWinnings, color = "Winnings"), size = 1) +
   # geom_line(aes(y = -CumulativeLosses, color = "Losses"), size = 1) +
-  geom_line(aes(y = total_money), size = 1) +
+  geom_hline(yintercept = 0, size = 1.1, color = "black") +
   labs(
     title = paste0("Winnings: $",df$TotalMoney[nrow(df)]),
        caption = paste("Seed:", seed),
        x = "Game Number",
        y = "Earnings",
        color = "Legend") +
-  scale_y_continuous(labels = scales::dollar_format(scale = 1)) +
-  theme(legend.position = "none")
+  geom_line(aes(y = total_money), size = 1, color = "#2E6171") +
+  scale_y_continuous(labels = scales::dollar_format(scale = 1), expand = c(0, 0)) + 
+  scale_x_continuous(expand = c(0, 0)) + 
+  theme(
+    panel.grid.minor = element_line(colour = "gray95"),
+    panel.background = element_rect(fill = NA),
+    axis.ticks = element_line(colour = "gray80"),
+    panel.grid.major = element_line(colour = "gray85"),
+    axis.text.x = element_text(hjust = 0.75)
+    )
+
+if(df$TotalMoney[nrow(df)]<0) p + theme(plot.title = element_text(color = "red"))
+else p
 }

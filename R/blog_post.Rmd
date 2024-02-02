@@ -32,9 +32,9 @@ source("../R/game.R")
 
 # Introduction
 
-I was first introduced to the [law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers) in college and was fascinated with how simple it can be understand, yet people will still gamble money expecting to win more than what they wager. Here I wrote a function that takes three parameters to help simulate a night of gambling. The parameters are `Number of games played`, `Probabiliy of winning a game` and `Cost to play a game`. I have this function randomly sample n amount of trials based on the `Number of games played` argument passed in our function. The output is a plot showing how your earnings converged throughout the night and your final earnings at the end of the night. I've included a randomly drawn seed for every plot also in case you are interested in recreating this random data with a certain seed that I set. 
+I was first introduced to the [law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers) in college and was fascinated with how simple it can be understand, yet people will still gamble money expecting to win more than what they wager. Here I wrote a function that takes three parameters to help simulate a night of gambling. The parameters are `Number of games played`, `Probabiliy of winning a game` and `Cost to play a game`. I have this function that randomly samples n amount of trials based on the `Number of games played` argument passed in our function. The output is a plot showing how your earnings converged throughout the night and your final earnings at the end of the night. I've included a randomly drawn seed for every plot also in case you are interested in recreating this random data with a certain seed that I set. 
 
-If you have a 49% chance of winning a game, your earnings in the game may start off high or low. As you play more and more games, your earnings will start to converge negative infinity as shown below.
+If you have a 49% chance of winning a game, your earnings in the game may start off high or low. As you play more and more games, your earnings will start to converge towards negative infinity as shown below.
 
 ## Example of game with 49% chance of winning played
 ```{r example of lln, warning=FALSE}
@@ -46,14 +46,15 @@ game(
 )
 ```
 
-If you have a 50/50 chance of winning a game you should expect to be close to breaking even at the end of the night. It is very much possible that you will not have an earnings of 0$ but be very close at the end of the night.
+If you have a 50/50 chance of winning a game you should expect to be close to breaking even at the end of the night. It is very much possible that you will not have an earnings of 0$ but be close at the end of the night.
 
 ## Example of game with 50% chance of winning played
 ```{r}
 game(
-  num_games = 10000,
+  num_games = 100000,
   win_probability = 0.5,
-  money_per_game = 10
+  money_per_game = 1,
+  seed = 899923
 )
 ```
 
@@ -104,6 +105,8 @@ plots(
 ```
 
 # Game Simualtions
+
+Below I have listed a few games with simulations of playing based on my basic knowledge of how these games are played. I did not adjust for the fact that in games you have the chance of winning more than what you wager. I kept a simple scenario where if you wing you win double what you bet and if you loose, you loose all the money you bet. 
 
 ## Slots
 ```{r slots}
