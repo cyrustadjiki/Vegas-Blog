@@ -130,8 +130,8 @@ plots(
   )
 ```
 
-<!-- ## Crabs -->
-```{r crabs, eval=F}
+## Crabs
+```{r crabs, eval=T}
 plots(
   num_rows = 2,
   num_cols = 3,

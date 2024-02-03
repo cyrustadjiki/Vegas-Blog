@@ -137,7 +137,7 @@ plots(
 
 ![](blog_post_files/figure-html/poker-1.png)<!-- -->
 
-<!-- ## Crabs -->
+## Crabs
 
 ```r
 plots(
@@ -148,3 +148,5 @@ plots(
   money_per_game = 5
   )
 ```
+
+![](blog_post_files/figure-html/crabs-1.png)<!-- -->
