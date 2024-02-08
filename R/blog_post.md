@@ -137,7 +137,7 @@ plots(
 
 ![](blog_post_files/figure-html/poker-1.png)<!-- -->
 
-## Crabs
+## Craps
 
 ```r
 plots(
@@ -149,5 +149,5 @@ plots(
   )
 ```
 
-![](blog_post_files/figure-html/crabs-1.png)<!-- -->
+![](blog_post_files/figure-html/craps-1.png)<!-- -->
 
